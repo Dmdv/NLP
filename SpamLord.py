@@ -3,9 +3,12 @@ import os
 import re
 import pprint
 
-my_first_pat = '(\w+)@(\w+).edu'
+#my_first_pat = '(\w+)@(\w+).edu'
+#my_first_pat = '(\w+)(\s*@\s*|\s*dot\s*)(\w+).+edu'
+#my_first_pat = '(\w+)(\s*@\s*|\s*dot\s*|\s*at\s*)(\w+)(\s*dot\s*|\s*\.*\s*)(?:com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)'
+my_first_pat = '(\w+\.)*(\w+)\s*(@|\({1}\s*at\s*\){1}|\s+at\s+)\s*(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)'
 
-""" 
+"""
 TODO
 This function takes in a filename along with the file object (actually
 a StringIO object at submission time) and
@@ -33,7 +36,11 @@ def process_file(name, f):
     for line in f:
         matches = re.findall(my_first_pat,line)
         for m in matches:
-            email = '%s@%s.edu' % m
+            email = ''
+            for group in m:
+                email += str(group).strip().replace('at', '@').replace('dot','.')
+            #email = str(m)
+            #email = '%s@%s.edu' % m
             res.append((name,'e',email))
     return res
 
@@ -89,13 +96,13 @@ def score(guess_list, gold_list):
     #pp.pprint(guess_set)
     #print 'Gold (%d): ' % len(gold_set)
     #pp.pprint(gold_set)
-    print 'True Positives (%d): ' % len(tp)
+    print('True Positives (%d): ' % len(tp))
     pp.pprint(tp)
-    print 'False Positives (%d): ' % len(fp)
+    print('False Positives (%d): ' % len(fp))
     pp.pprint(fp)
-    print 'False Negatives (%d): ' % len(fn)
+    print('False Negatives (%d): ' % len(fn))
     pp.pprint(fn)
-    print 'Summary: tp=%d, fp=%d, fn=%d' % (len(tp),len(fp),len(fn))
+    print('Summary: tp=%d, fp=%d, fn=%d' % (len(tp), len(fp), len(fn)))
 
 """
 You should not need to edit this function.
@@ -113,7 +120,7 @@ It then processes each file within that directory and extracts any
 matching e-mails or phone numbers and compares them to the gold file
 """
 if __name__ == '__main__':
-    if (len(sys.argv) != 3):
-        print 'usage:\tSpamLord.py <data_dir> <gold_file>'
+    if len(sys.argv) != 3:
+        print('usage:\tSpamLord.py <data_dir> <gold_file>')
         sys.exit(0)
     main(sys.argv[1],sys.argv[2])
