@@ -1,0 +1,64 @@
+^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$
+(\w+)(\s*@\s*|\s*dot\s*)(\w+).+edu
+
+^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$
+
+Учёт пробелов и отсутствия . между именем домена и расширением.
+
+(\w+)(\s*@\s*|\s*dot\s*)(\w+)\.*\s*edu
+
+Любые домены
+
+(\w+)(\s*@\s*|\s*dot\s*)(\w+)\s*\.*\s*(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+
+
+Вместо @ и . могут использоваться любые из набора {. dot at}
+(\w+)(\s*@\s*|\s*dot\s*|\s*at\s*)(\w+)(\s*dot\s*|\s*at\s*|\s*\.*\s*)(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+
+Убрал at в качестве .
+
+(\w+)(\s*@\s*|\s*dot\s*|\s*at\s*)(\w+)(\s*dot\s*|\s*\.*\s*)(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+
+Убрал [A-Z]{2} - давало ложное срабатывание
+
+(\w+)(\s*@\s*|\s*dot\s*|\s*at\s*)(\w+)(\s*dot\s*|\s*\.*\s*)(?:com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+
+Поскольку нужно всего две группы, а расширение содержит лишь .edu - упрощение
+
+(\w+)(\s*@\s*|\s*dot\s*|\s*at\s*)(\w+)(\s*dot\s*|\s*\.*\s*)edu
+
+at могут быть включены в скобки и возврат к нескольким вариантам домена.
+(\w+)(\s*@\s*|\s*dot\s*|\s*\(*\s*at\s*\)*\s*)(\w+)(\s*dot\s*|\s*\.*\s*)(?:com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+
+Включение поддомена
+
+(\w+)(\s*@\s*|\s*dot\s*|\s*\(*\s*at\s*\)*\s*)(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)
+
+(\w+)
+(\s*@\s*|\s*dot\s*|\s*\(*\s*at\s*\)*\s*) # @
+(\s*(@|\(*\s*at\s*\)*){1}\s*) # @
+(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)
+
+Рефакторинг: at может быть со скобками и без. Но если он без скобок, тогда там должно быть любое количество пробелов.
+(\w+)\s*(@|\({1}\s*at\s*\){1}|\s+at\s+){1}\s*(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)
+
+Для имен, которые могут состоять из нескольких слов, разделенных точкой:
+
+(\w+\.)*(\w+)\s*(@|\({1}\s*at\s*\){1}|\s+at\s+)\s*(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)
+
+После выражения - конец слова.
+(\w+\.)*\w+\s*(@|\({1}\s*at\s*\){1}|\s+at\s+)\s*(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)\b
+
+(\w+\.)*\w+\s*(@|\({1}\s*at\s*\){1}|\s+at\s+)\s*(\S{2,3}\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)\b
+
+(@|\(\s*at\s*\)|\s+at\s+) - это символ @
+
+
+RFC 2822
+(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])
+
+my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)(@|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(\s*dot\s*|\s*\.*\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)\b"
+
+my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*dot\s*|\s*\.\s*)(com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|ru)\b"
+
+dot или . (?:\s*dot\s*|\s*\.\s*)
