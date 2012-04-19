@@ -24,3 +24,11 @@ for line in strings:
         for group in m:
             email += str(group).strip().replace('(at)', '@').replace('dot','.')
     print (email)
+
+phone = r"(?<=([\(.]?))[0-9]\d\d(?=([\).]?))[ -]?[2-9]\d\d[-.]\d{4}"
+line = "Phone: (650)814-1478 [Cell], Fax: (650)723-1614<o:p></o:p><br>"
+line = "(650)8"
+phone = "(?<=([\(.]))([0-9]\d\d)(?=([\).]?))\d"
+matches = re.findall(phone, line)
+for m in matches:
+    print(m)

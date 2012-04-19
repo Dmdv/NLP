@@ -11,8 +11,11 @@ import pprint
 #my_first_pat = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
 
 #my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\s*dot\s*|\s*\.\s*))+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\s*dot\s*|\s*\.\s*)){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-zA-Z0-9-]*[a-zA-Z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\b"
-my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*dot\s*|\s*\.\s*)(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
-phone_patterns = r"\b[0-9]{3}-[0-9]{3}-[0-9]{4}\b"
+my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|WHERE|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*(?:dot|DOM|DOT)\s*|\s*\.\s*)(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
+#my_first_pat = r"\b(?<!@)((\w+\.)*\w+)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*dot\s*|\s*\.\s*)(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
+
+#phone = r"(?<=([\(.]))([0-9]\d\d)(?=([\).]?))([ -]?[2-9]\d\d[-.]\d{4})"
+phone = r"([\(.])([0-9]\d\d)([\).]?)\s*((\s*[-]\s*)?[0-9]\d\d[-.]\d{4})"
 
 """
 TODO
@@ -39,26 +42,36 @@ def process_file(name, f):
     # note that debug info should be printed to stderr
     # sys.stderr.write('[process_file]\tprocessing file: %s\n' % (path))
     res = []
-    for line in f:
-        try:
+    line = ""
+    curr = 0
+    try:
+        for line in f:
+            curr += 1
             #line = "test @ sdffs dot com"
             #line = "uma @ cs.stanford.edu"
             #line = "uma at cs dot Stanford dot EDU"
             #line = "<DT>Uma Mulukutla  <a href='mailto:uma@cs.stanford.EDU'>uma at cs.Stanford.EDU</A>"
+            #line = "d-l-w-h-@-s-t-a-n-f-o-r-d-.-e-d-u"
+            #line = "<address>engler WHERE stanford DOM edu</address>"
+            #line = "Phone: (650)814-1478 [Cell], Fax: (650)723-1614<o:p></o:p><br>"
 
-            test = str(line)
-
-            if name == "cheriton":
-                print(test)
-
-            matches = re.findall(my_first_pat, test)
+            matches = re.findall(my_first_pat, line)
             for m in matches:
-                email = '%s@%s%s.%s' % m
+                email = ""
+                try:
+                    email = '%s@%s%s.%s' % m
+                except :
+                    print("Failed to print str: ", matches)
                 email = email.replace('dot','.').replace(' ', '').lower()
-                #print(email)
                 res.append((name,'e',email))
-        except:
-            print("Exception: ", f)
+            matches = re.findall(phone, line)
+            for m2 in matches:
+                number = m2[1] + "-" + m2[3]
+                res.append((name,'p',number))
+    except:
+        print("Line = ", line)
+        print("Curr = ", curr)
+        print("Exception in : ", name, f)
     return res
 
 """
@@ -73,11 +86,6 @@ def process_dir(data_path):
             continue
         path = os.path.join(data_path,fname)
         f = open(path,'r')
-
-        #if fname == "cheriton":
-        #    for line in f:
-        #        print(line)
-
         f_guesses = process_file(fname, f)
         guess_list.extend(f_guesses)
     return guess_list
