@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f79eb58-6380-4af0-930e-93fc2ce8d223" name="Default" comment="Доработка регекса для извлечения email">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="1f79eb58-6380-4af0-930e-93fc2ce8d223" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Natlanproc.iws" />
@@ -342,7 +341,11 @@
       <created>1334862804560</created>
       <updated>1334862804560</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Проектные файлы">
+      <created>1334862818941</created>
+      <updated>1334862818941</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -426,7 +429,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Тестовый класс список регексов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Проектные файлы" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -443,6 +446,7 @@
     <MESSAGE value="Исправлена кодировка" />
     <MESSAGE value="Доработка регекса для извлечения email" />
     <MESSAGE value="Тестовый класс список регексов" />
+    <MESSAGE value="Проектные файлы" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
