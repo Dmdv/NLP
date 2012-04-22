@@ -13,23 +13,23 @@ class NullDevice:
     pass
 
 def submit(partId):   
-  print '==\n== [nlp] Submitting Solutions | Programming Exercise %s\n=='% homework_id()
-  if(not partId):
+  print('==\n== [nlp] Submitting Solutions | Programming Exercise %s\n==' % homework_id())
+  if not partId:
     partId = promptPart()
 
   partNames = validParts()
   if not isValidPartId(partId):
-    print '!! Invalid homework part selected.'
-    print '!! Expected an integer from 1 to %d.' % (len(partNames) + 1)
-    print '!! Submission Cancelled'
+    print('!! Invalid homework part selected.')
+    print('!! Expected an integer from 1 to %d.' % (len(partNames) + 1))
+    print('!! Submission Cancelled')
     return
   
   (login, password) = loginPrompt()
   if not login:
-    print '!! Submission Cancelled'
+    print('!! Submission Cancelled')
     return
-  
-  print '\n== Connecting to coursera ... '
+
+  print('\n== Connecting to coursera ... ')
 
   # Setup submit list
   if partId == len(partNames) + 1:
@@ -40,21 +40,21 @@ def submit(partId):
   for partId in submitParts:
     # Get Challenge
     (login, ch, state, ch_aux) = getChallenge(login, partId)
-    if((not login) or (not ch) or (not state)):
+    if(not login) or (not ch) or (not state):
       # Some error occured, error string in first return element.
-      print '\n!! Error: %s\n' % login
+      print('\n!! Error: %s\n' % login)
       return
 
     # Attempt Submission with Challenge
     ch_resp = challengeResponse(login, password, ch)
     (result, string) = submitSolution(login, ch_resp, partId, output(partId, ch_aux), \
                                     source(partId), state, ch_aux)
-    print '== [nlp] Submitted Homework %s - Part %d - %s' % \
-          (homework_id(), partId, partNames[partId - 1])
-    print '== %s' % string.strip()
-    if (string.strip() == 'Exception: We could not verify your username / password, please try again. (Note that your password is case-sensitive.)'):
-      print '== The password is not your login, but a 10 character alphanumeric string displayed on the top of the Assignments page'
-
+    print('== [nlp] Submitted Homework %s - Part %d - %s' %\
+          (homework_id(), partId, partNames[partId - 1]))
+    print('== %s' % string.strip())
+    if string.strip() == 'Exception: We could not verify your username / password, please try again. (Note that your password is case-sensitive.)':
+        print(
+            '== The password is not your login, but a 10 character alphanumeric string displayed on the top of the Assignments page')
 
 
 def promptPart():
@@ -63,9 +63,9 @@ def promptPart():
   partNames = validParts()
   srcFiles = sources()
   for i in range(1,len(partNames)+1):
-    print '==   %d) %s [ %s ]' % (i, partNames[i - 1], srcFiles[i - 1])
-  print '==   %d) All of the above \n==\nEnter your choice [1-%d]: ' % \
-          (len(partNames) + 1, len(partNames) + 1)
+      print('==   %d) %s [ %s ]' % (i, partNames[i - 1], srcFiles[i - 1]))
+  print('==   %d) All of the above \n==\nEnter your choice [1-%d]: ' %\
+        (len(partNames) + 1, len(partNames) + 1))
   selPart = raw_input('') 
   partId = int(selPart)
   if not isValidPartId(partId):
@@ -125,10 +125,10 @@ def getChallenge(email, partId):
 
   # text is of the form email|ch|signature
   splits = text.split('|')
-  if(len(splits) != 9):
-    print 'Badly formatted challenge response: %s' % text
+  if len(splits) != 9:
+    print('Badly formatted challenge response: %s' % text)
     return None
-  return (splits[2], splits[4], splits[6], splits[8])
+  return splits[2], splits[4], splits[6], splits[8]
 
 
 
@@ -189,9 +189,9 @@ def source(partId):
     for fname in flist:
       # open the file, get all lines
       f = open(fname)
-      src = src + f.read() 
+      src += f.read()
       f.close()
-      src = src + '||||||||'
+      src += '||||||||'
   return src
 
 ############ BEGIN ASSIGNMENT SPECIFIC CODE ##############
@@ -203,11 +203,11 @@ def dumps_list_of_lists(res):
   """Deprecated version of JSON encoder. Used as a fallback if python cannot import json library."""
   s = '['
   for i, l in enumerate(res):
-    if (i != 0):
+    if i:
       s += ', '
     s += '['
     for j, e in enumerate(l):
-      if (j != 0):
+      if j:
         s += ', '
       s += '\"%s\"' % e
     s += ']'
@@ -219,26 +219,27 @@ def output(partId, ch_aux):
   """Uses the student code to compute the output for test cases."""
 
   res = []
-  print '== Running your code ...'
+  print('== Running your code ...')
   # disable printing:
   original_stdout = sys.stdout
   sys.stdout = NullDevice()
-  if(partId==1):
+  if partId==1:
     train_data = ''
     res = SpamLord.process_dir('../data/dev')
-  elif(partId==2):
+  elif partId==2:
     test_data = StringIO.StringIO(ch_aux)
     res = SpamLord.process_file('foo', test_data)
   else:
     sys.stdout = original_stdout
-    print '[WARNING]\t[output]\tunknown partId: %s' % partId
+    print('[WARNING]\t[output]\tunknown partId: %s' % partId)
   sys.stdout = original_stdout
-  print '== Finished running your code'
+  print('== Finished running your code')
   try: 
     import json
     res_json = json.dumps(res)
   except ImportError:
-    print '!!! Error importing json library. This is likely due to an early version of Python 2.6. Attempting to submit without json library. If this fails, please update to Python 2.7.'
+    print(
+        '!!! Error importing json library. This is likely due to an early version of Python 2.6. Attempting to submit without json library. If this fails, please update to Python 2.7.')
     res_json = dumps_list_of_lists(res)
   return res_json
 

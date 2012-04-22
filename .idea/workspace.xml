@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f79eb58-6380-4af0-930e-93fc2ce8d223" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/dev/jurafsky" afterPath="$PROJECT_DIR$/data/dev/jurafsky" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/dev/subh" afterPath="$PROJECT_DIR$/data/dev/subh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpamLord.py" afterPath="$PROJECT_DIR$/SpamLord.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/submit.py" afterPath="$PROJECT_DIR$/submit.py" />
     </list>
     <ignored path="Natlanproc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,20 +29,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Regexp.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Regexp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="17" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SpamLord.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SpamLord.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="50" selection-start="5221" selection-end="5221" vertical-scroll-proportion="0.37700534">
-              <folding />
+            <state line="10" column="34" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-1.431579">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,22 +50,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/EditInstance.py" />
         <option value="$PROJECT_DIR$/tokenize.txt" />
         <option value="$PROJECT_DIR$/PorterStemmer.py" />
+        <option value="$PROJECT_DIR$/data/dev/subh" />
         <option value="$PROJECT_DIR$/Regexp.py" />
+        <option value="$PROJECT_DIR$/data/dev/jurafsky" />
+        <option value="$PROJECT_DIR$/submit.py" />
         <option value="$PROJECT_DIR$/SpamLord.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="68" />
-    <option name="y" value="27" />
-    <option name="width" value="1304" />
-    <option name="height" value="814" />
+    <option name="x" value="51" />
+    <option name="y" value="22" />
+    <option name="width" value="1300" />
+    <option name="height" value="781" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -84,7 +87,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -96,6 +99,34 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Natlanproc">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Natlanproc">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="data">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -148,16 +179,15 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
-    <property name="options.searchVisible" value="true" />
+    <property name="options.lastSelected" value="reference.settings.ide.settings.spelling" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -167,7 +197,7 @@
       <PyConsoleSettings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.Regexp">
+  <component name="RunManager" selected="Python.SpamLord">
     <configuration default="false" name="EditInstance" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,7 +379,15 @@
       <created>1334862827876</created>
       <updated>1334862827876</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1111">
+      <created>1334862857243</created>
+      <updated>1334862857243</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Доработка экстрактора">
+      <created>1334875148870</created>
+      <updated>1334875148870</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -373,24 +411,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="27" width="1304" height="814" extended-state="0" />
-    <editor active="false" />
+    <frame x="51" y="22" width="1300" height="781" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4025974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29140127" sideWeight="0.5974026" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4446043" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29242423" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756132" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2356688" sideWeight="0.21789321" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21805112" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.50757575" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3294964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -433,7 +471,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Проектные файлы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработка экстрактора" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -451,77 +489,102 @@
     <MESSAGE value="Доработка регекса для извлечения email" />
     <MESSAGE value="Тестовый класс список регексов" />
     <MESSAGE value="Проектные файлы" />
+    <MESSAGE value="1111" />
+    <MESSAGE value="Доработка экстрактора" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_breakpoints.py">
+    <entry file="file://$PROJECT_DIR$/data/dev/christos">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3617" selection-end="3617" vertical-scroll-proportion="0.0" />
+        <state line="19" column="25" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stemm.txt">
+    <entry file="file://$PROJECT_DIR$/data/dev/cheriton">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tokenize.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="807" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EditInstance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="16" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PorterStemmer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.7994429" />
+        <state line="19" column="61" selection-start="451" selection-end="508" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.2/lib/python3.2/encodings/ascii.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.632312" />
+        <state line="25" column="0" selection-start="633" selection-end="633" vertical-scroll-proportion="0.33245382" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/bgirod">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="34" selection-start="2096" selection-end="2099" vertical-scroll-proportion="-10.807693" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/latombe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="487" column="121" selection-start="20416" selection-end="20533" vertical-scroll-proportion="0.33173078" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/hager">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="89" selection-start="4056" selection-end="4129" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/jks">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="2" selection-start="4728" selection-end="4820" vertical-scroll-proportion="-4.769231" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/jurafsky">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/levoy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="25" selection-start="1730" selection-end="1736" vertical-scroll-proportion="-22.538462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/ouster">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="76" selection-start="949" selection-end="1023" vertical-scroll-proportion="0.82867134" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/pal">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="43" selection-start="652" selection-end="687" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/dev/fedkiw">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1122" column="4" selection-start="52734" selection-end="52734" vertical-scroll-proportion="0.0" />
+        <state line="37" column="355" selection-start="1129" selection-end="1484" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/dev/lam">
+    <entry file="file://$PROJECT_DIR$/data/dev/ullman">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="380" column="18" selection-start="14250" selection-end="14250" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/dev/hanrahan">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="72" selection-start="6121" selection-end="6193" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.2/lib/python3.2/sre_parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="696" column="0" selection-start="23866" selection-end="23866" vertical-scroll-proportion="0.33147633" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Regexp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="17" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
+        <state line="53" column="13" selection-start="1796" selection-end="1805" vertical-scroll-proportion="-16.76923">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dev/dlwh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="0" selection-end="33" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="12" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SpamLord.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="50" selection-start="5221" selection-end="5221" vertical-scroll-proportion="0.37700534">
-          <folding />
+        <state line="10" column="34" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-1.431579">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

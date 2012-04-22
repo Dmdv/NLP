@@ -3,19 +3,25 @@ import os
 import re
 import pprint
 
-#my_first_pat = '(\w+)@(\w+).edu'
 #my_first_pat = r"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
 #my_first_pat = r"/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD"
-
 #rfc 2822
 #my_first_pat = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
-
 #my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\s*dot\s*|\s*\.\s*))+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\s*dot\s*|\s*\.\s*)){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-zA-Z0-9-]*[a-zA-Z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\b"
-my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|WHERE|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*(?:dot|DOM|DOT)\s*|\s*\.\s*)(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
-#my_first_pat = r"\b(?<!@)((\w+\.)*\w+)\s*(?:@|\(\s*at\s*\)|\s+at\s+)\s*(\w+\.)?(\w+)(?:\s*dot\s*|\s*\.\s*)(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
+#my_first_pat = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\&\#x40;|WHERE|\(\s*at\s*\)|\s+at\s+)\s*(\w+\s*(?:dot|DOM|DOT|\.|\;)?)?\s*(\w+)\s*(?:dot|DOM|DOT|\.|\;)?\s*(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
+
+emlPattern = r"\b(?<!@)([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)\s*(?:@|\&\#x40;|WHERE|\(\s*at\s*\)|\s+at\s+)" \
+               r"\s*(?:(\w+)\s*(?:dot|DOM|DOT|dt|\.|\;)?)?\s*" \
+               r"(\w+)?(?:\s*(?:dot|DOM|DOT|dt|\.|\;)?\s*)?" \
+               r"(com|COM|org|ORG|net|NET|edu|EDU|gov|GOV|mil|MIL|biz|BIZ|info|INFO|mobi|MOBI|name|NAME|aero|AERO|asia|ASIA|jobs|JOBS|museum|MUSEUM|ru|RU)\b"
+
+obfuscate = r"(?<!(obfuscate\())(\w+\.\w+\b)(?:\'\,\')(\w+)\b"
+followed = r"((?:\w+\.)?\w+)\s*\(followed\s?\w+\s*(?:\"|&ldquo;|&rdquo;)(@(?:\w+\.)+\w+)(?:\"|&ldquo;|&rdquo;)"
+complex = r"\b(?:[a-z][-])+@(?:[-][a-z][-]?)+\.(?:[-][a-z])+\b"
 
 #phone = r"(?<=([\(.]))([0-9]\d\d)(?=([\).]?))([ -]?[2-9]\d\d[-.]\d{4})"
-phone = r"([\(.])([0-9]\d\d)([\).]?)\s*((\s*[-]\s*)?[0-9]\d\d[-.]\d{4})"
+phone = r"\b(\+[1-9]\s*)?(?:[\(.]?)([2-9]\d\d)(?:[\).]?)(?:\s*[-]\s*)?\s*([0-9]\d\d)(?:s*[-.]s*)?\s*(\d{4})\b"
+phone = r"\b(?:\(?)([2-9]\d\d)\W?\s?(\d{3})\W?(\d{4})\b"
 
 """
 TODO
@@ -47,27 +53,42 @@ def process_file(name, f):
     try:
         for line in f:
             curr += 1
-            #line = "test @ sdffs dot com"
-            #line = "uma @ cs.stanford.edu"
-            #line = "uma at cs dot Stanford dot EDU"
-            #line = "<DT>Uma Mulukutla  <a href='mailto:uma@cs.stanford.EDU'>uma at cs.Stanford.EDU</A>"
-            #line = "d-l-w-h-@-s-t-a-n-f-o-r-d-.-e-d-u"
-            #line = "<address>engler WHERE stanford DOM edu</address>"
-            #line = "Phone: (650)814-1478 [Cell], Fax: (650)723-1614<o:p></o:p><br>"
 
-            matches = re.findall(my_first_pat, line)
-            for m in matches:
-                email = ""
-                try:
-                    email = '%s@%s%s.%s' % m
-                except :
-                    print("Failed to print str: ", matches)
-                email = email.replace('dot','.').replace(' ', '').lower()
+            # match obfuscated
+            if line.find("obfuscate") != -1:
+                matches = re.findall(obfuscate, line)
+                m = matches[0]
+                email = m[2] + "@" + m[1]
                 res.append((name,'e',email))
+
+            # match followed pattern
+            if line.find("followed") != -1:
+                matches = re.findall(followed, line)
+                m = matches[0]
+                email = '%s%s' % m
+                res.append((name,'e',email))
+
+            #match malformed email
+            matches = re.findall(emlPattern, line)
+            for m in matches:
+                if m[2] == "":
+                    email = '%s@%s.%s%s' % m
+                else:
+                    email = '%s@%s.%s.%s' % m
+                res.append((name,'e',email))
+
+            #match phones
             matches = re.findall(phone, line)
             for m2 in matches:
-                number = m2[1] + "-" + m2[3]
+                number = '%s-%s-%s' %m2
                 res.append((name,'p',number))
+
+            # match complex pattern
+            matches = re.findall(complex, line)
+            if len(matches):
+                email = matches[0].replace("-", "")
+                res.append((name,'e',email))
+
     except:
         print("Line = ", line)
         print("Curr = ", curr)
