@@ -1,18 +1,19 @@
 import urllib
-import urllib2
+#import urllib2
 import hashlib
-import random
+#import random
 import email
-import email.message
-import email.encoders
-import StringIO
+#import email.message
+#import email.encoders
+import io
+#import StringIO
 import sys
 
 class NullDevice:
   def write(self, s):
     pass
 
-def submit(partId):   
+def submit(partId):
   print('==\n== [nlp] Submitting Solutions | Programming Exercise %s\n==' % homework_id())
   if not partId:
     partId = promptPart()
@@ -47,8 +48,8 @@ def submit(partId):
 
     # Attempt Submission with Challenge
     ch_resp = challengeResponse(login, password, ch)
-    (result, string) = submitSolution(login, ch_resp, partId, output(partId, ch_aux), \
-                                    source(partId), state, ch_aux)
+    (result, string) = submitSolution(login, ch_resp, partId, output(partId, ch_aux),
+        source(partId), state, ch_aux)
     print('== [nlp] Submitted Homework %s - Part %d - %s' %\
           (homework_id(), partId, partNames[partId - 1]))
     print('== %s' % string.strip())
@@ -66,7 +67,7 @@ def promptPart():
       print('==   %d) %s [ %s ]' % (i, partNames[i - 1], srcFiles[i - 1]))
   print('==   %d) All of the above \n==\nEnter your choice [1-%d]: ' %\
         (len(partNames) + 1, len(partNames) + 1))
-  selPart = raw_input('') 
+  selPart = input('')
   partId = int(selPart)
   if not isValidPartId(partId):
     partId = -1
@@ -75,23 +76,23 @@ def promptPart():
 
 def validParts():
   """Returns a list of valid part names."""
-  partNames = ['Development Set', \
-                'Test Set'
+  partNames = ['Development Set',
+               'Test Set'
               ]
   return partNames
 
 
 def sources():
   """Returns source files, separated by part. Each part has a list of files."""
-  srcs = [ [ 'SpamLord.py' ], \
-           [ 'SpamLord.py' ],
+  srcs = [ [ 'SpamLord.py' ],
+      [ 'SpamLord.py' ],
          ]
   return srcs
 
 def isValidPartId(partId):
   """Returns true if partId references a valid part."""
   partNames = validParts()
-  return (partId and (partId >= 1) and (partId <= len(partNames) + 1))
+  return partId and (partId >= 1) and (partId <= len(partNames) + 1)
 
 
 # =========================== LOGIN HELPERS ===========================
@@ -104,8 +105,8 @@ def loginPrompt():
 
 def basicPrompt():
   """Prompt the user for login credentials. Returns a tuple (login, password)."""
-  login = raw_input('Login (Email address): ')
-  password = raw_input('Password: ')
+  login = input('Login (Email address): ')
+  password = input('Password: ')
   return login, password
 
 
@@ -119,8 +120,8 @@ def getChallenge(email, partId):
   url = challenge_url()
   values = {'email_address' : email, 'assignment_part_sid' : "%s-%s" % (homework_id(), partId), 'response_encoding' : 'delim'}
   data = urllib.urlencode(values)
-  req = urllib2.Request(url, data)
-  response = urllib2.urlopen(req)
+  req = urllib.Request(url, data)
+  response = urllib.urlopen(req)
   text = response.read().strip()
 
   # text is of the form email|ch|signature
@@ -162,19 +163,19 @@ def submitSolution(email_address, ch_resp, part, output, source, state, ch_aux):
   output_64_msg = email.message.Message()
   output_64_msg.set_payload(output)
   email.encoders.encode_base64(output_64_msg)
-  values = { 'assignment_part_sid' : ("%s-%s" % (homework_id(), part)), \
-             'email_address' : email_address, \
+  values = { 'assignment_part_sid' : ("%s-%s" % (homework_id(), part)),
+             'email_address' : email_address,
              #'submission' : output, \
-             'submission' : output_64_msg.get_payload(), \
+             'submission' : output_64_msg.get_payload(),
              #'submission_aux' : source, \
-             'submission_aux' : source_64_msg.get_payload(), \
-             'challenge_response' : ch_resp, \
-             'state' : state \
-           }
+             'submission_aux' : source_64_msg.get_payload(),
+             'challenge_response' : ch_resp,
+             'state' : state
+  }
   url = submit_url()  
   data = urllib.urlencode(values)
-  req = urllib2.Request(url, data)
-  response = urllib2.urlopen(req)
+  req = urllib.Request(url, data)
+  response = urllib.urlopen(req)
   string = response.read().strip()
   # TODO parse string for success / failure
   result = 0
@@ -227,7 +228,7 @@ def output(partId, ch_aux):
     train_data = ''
     res = SpamLord.process_dir('../data/dev')
   elif partId==2:
-    test_data = StringIO.StringIO(ch_aux)
+    test_data = io.StringIO(ch_aux)
     res = SpamLord.process_file('foo', test_data)
   else:
     sys.stdout = original_stdout
